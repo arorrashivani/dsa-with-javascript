@@ -1,4 +1,4 @@
-# 328. Odd Even Linked List
+# Leet 328 Odd Even Linked List
 
 Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.
 
@@ -11,7 +11,7 @@ You must solve the problem in O(1) extra space complexity and O(n) time complexi
 Example 1:
 
 <center>
-    <img src="images/oddeven-linked-list.jpg">
+    <img src="../../images/oddeven-linked-list.jpg">
 </center>
 
 <br/>
@@ -23,7 +23,7 @@ Output: [1,3,5,2,4]
 Example 2:
 
 <center>
-    <img src="images/oddeven2-linked-list.jpg">
+    <img src="../../images/oddeven2-linked-list.jpg">
 </center>
 
 Input: head = [2,1,3,5,6,4,7]
