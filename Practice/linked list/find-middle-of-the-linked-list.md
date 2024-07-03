@@ -103,9 +103,11 @@ Auxiliary Space: O(1)
 Find Middle of the Linked List by Counting Nodes (One-pass):
 
 ```
-Initialize an extra pointer, say mid with the head of the linked list and a counter to count the number of nodes in the linked list. 
-Now, we traverse the linked list and increment the counter for each node and every time the value of counter becomes even, 
-we move the mid pointer forward. As soon as we reach the end of the linked list, we return the mid pointer.
+Initialize an extra pointer, say mid with the head of the linked list and 
+a counter to count the number of nodes in the linked list. 
+Now, we traverse the linked list and increment the counter for each node and 
+every time the value of counter becomes even, we move the mid pointer forward. 
+As soon as we reach the end of the linked list, we return the mid pointer.
 ```
 
 ```
@@ -144,13 +146,17 @@ Auxiliary Space: O(1)
 ## Floyd’s Cycle Finding Algorithm
 
 ```
-We can use the Floyd’s Cycle Finding Algorithm, also known as Hare and Tortoise Algorithm to find the middle of the linked list. 
-Traverse linked list using a slow pointer and a fast pointer. Move the slow pointer to the next node(one node forward) and the 
-fast pointer to the next of the next node(two nodes forward). When the fast pointer reaches the last node or NULL, 
+We can use the Floyd’s Cycle Finding Algorithm, also known as Hare and Tortoise Algorithm 
+to find the middle of the linked list. 
+Traverse linked list using a slow pointer and a fast pointer. 
+Move the slow pointer to the next node(one node forward) and 
+the fast pointer to the next of the next node(two nodes forward). 
+When the fast pointer reaches the last node or NULL, 
 then the slow pointer will reach the middle of the linked list.
 
-In case of odd number of nodes in the linked list, slow_ptr will reach the middle node when fast_ptr will reach 
-the last node and in case of even number of nodes in the linked list, slow_ptr will reach the middle node 
+In case of odd number of nodes, 
+slow_ptr will reach the middle node when fast_ptr will reach the last node and 
+in case of even number of nodes, slow_ptr will reach the middle node 
 when fast_ptr will become NULL.
 ```
 

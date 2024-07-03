@@ -68,7 +68,8 @@ class Solution {
 ```
 Time Complexity: O(N), Visiting every node of the linked list of size N.
 Auxiliary Space: O(N), Space is used to store the nodes in the stack.
-Space Complexity: O(N) We use a stack to store the values of the linked list, and in the worst case, the stack will have all N values,  ie. storing the complete linked list.
+Space Complexity: O(N) We use a stack to store the values of the linked list,
+and in the worst case, the stack will have all N values,ie. storing the complete linked list.
 ```
 
 ## Reverse a linked list by Iterative Method
@@ -85,49 +86,49 @@ The idea is to use three pointers curr, prev, and next to keep track of nodes to
     <img src="../../images/ll-reverse-a2.jpg">
 </center>
 
+Follow the steps below to solve the problem:
+
+- Initialize three pointers prev as NULL, curr as head, and next as NULL.
+- Iterate through the linked list. In a loop, do the following:
+  - Before changing the next of curr, store the next node
+    - next = curr -> next
+  - Now update the next pointer of curr to the prev
+    - curr -> next = prev
+  - Update prev as curr and curr as next
+    - prev = curr
+    - curr = next
+
 ```
 class Solution {
     //Function to reverse a linked list.
     reverseList(head) {
-        // Initialize pointer 'temp' at
-        // head of the linked list
-        let temp = head;
-
-        // Initialize a pointer 'prev' to null
-        // representing the previous node
-        // (initially none)
         let prev = null;
+        let current = node;
+        let next = null;
 
-        // Traversing the list, continue until
-        // 'temp' reaches the end (null)
-        while (temp !== null) {
-            // Store the next node in
-            // 'front' to preserve the reference
-            let front = temp.next;
+        while (current != null) {
+            next = current.next;
 
-            // Reverse direction of current node's
-            // 'next' pointer to point to 'prev'
-            temp.next = prev;
+            current.next = prev;
 
-            // Move 'prev' to the current node,
-            // preparing it for the next iteration
-            prev = temp;
-
-            // Move 'temp' to the 'front' node
-            // (the next node), advancing traversal
-            temp = front;
+            // Update
+            prev = current;
+            current = next;
         }
-        // Return the new head of
-        // the reversed linked list
-        return prev;
+
+        node = prev;
+        return node;
     }
 }
 ```
 
 ```
-Time Complexity: O(N) The code traverses the entire linked list once, where 'n' is the number of nodes in the list. This traversal has a linear time complexity, O(n).
+Time Complexity: O(N) The code traverses the entire linked list once,
+where 'n' is the number of nodes in the list. This traversal has a linear time complexity, O(n).
 
-Space Complexity: O(1) The code uses only a constant amount of additional space, regardless of the linked list's length. This is achieved by using three pointers (prev, temp and front) to reverse the list without any significant extra memory usage, resulting in constant space complexity, O(1).
+Space Complexity: O(1) The code uses only a constant amount of additional space,
+regardless of the linked list's length. This is achieved by using three pointers (prev, temp and front)
+to reverse the list without any significant extra memory usage, resulting in constant space complexity, O(1).
 ```
 
 ## Reverse a linked list using Recursion
@@ -135,6 +136,14 @@ Space Complexity: O(1) The code uses only a constant amount of additional space,
 ```
 The idea is to reach the last node of the linked list using recursion then start reversing the linked list.
 ```
+
+The core of the algorithm lies in implementing a recursive function responsible for reversing the linked list. This function operates based on the following principle:
+
+If the base case conditions are not met, the function invokes itself recursively. This recursion continues until it reaches the base case, gradually reversing the linked list starting from the second node (node after it) onward.
+
+#### Return
+
+Following the recursion, the function returns the new head of the reversed linked list. This head marks the last node of the original list before reversal, now the first node in the reversed sequence.
 
 <center>
     <img src="../../images/Reverse-a-Linked-List-Recursively.webp">
@@ -146,6 +155,10 @@ Follow the steps below to solve the problem:
 - Call reverse for the rest of the linked list.
 - Link the rest linked list to first.
 - Fix head pointer to NULL
+
+<center>
+    <img src="../../images/recursive-ll-2.png">
+</center>
 
 <center>
     <img src="../../images/recursive-ll.png">
@@ -164,6 +177,10 @@ Follow the steps below to solve the problem:
 - Step 5: Prevent Cyclic References: Break the link from the current 'head' node to the 'front' node to prevent any cyclic formations. Set 'head->next' to 'NULL' to ensure the reversed segment of the list does not create a loop.
 
 - Step 6: Return the New Head: Finally, return the 'newHead,' which signifies the new head of the reversed linked list. This 'newHead' was initially the last node in the list before the reversal commenced.
+
+<center>
+    <img src="../../images/reverse-ll-3.png">
+</center>
 
 ```
 class Solution {
@@ -201,9 +218,16 @@ class Solution {
 ```
 
 ```
-Time Complexity: O(N) This is because we traverse the linked list twice: once to push the values onto the stack, and once to pop the values and update the linked list. Both traversals take O(N) time.
+Time Complexity: O(N) This is because we traverse the linked list twice:
+once to push the values onto the stack,
+and once to pop the values and update the linked list. Both traversals take O(N) time.
 
-Space Complexity : O(1) No additional space is used explicitly for data structures or allocations during the linked list reversal process. However, it's important to note that there is an implicit use of stack space due to recursion. This recursive stack space stores function calls and associated variables during the recursive traversal and reversal of the linked list. Despite this, no extra memory beyond the program's existing execution space is allocated, hence maintaining a space complexity of O(1).
+Space Complexity : O(1) No additional space is used explicitly for data structures
+or allocations during the linked list reversal process.
+However, it's important to note that there is an implicit use of stack space due to recursion.
+This recursive stack space stores function calls and associated variables during the recursive traversal
+and reversal of the linked list. Despite this, no extra memory beyond the program's
+existing execution space is allocated, hence maintaining a space complexity of O(1).
 ```
 
 ## Reverse a linked list by Tail Recursive Method
@@ -220,29 +244,33 @@ Follow the steps below to solve the problem:
 
 ```
 class Solution {
-    //Function to reverse a linked list.
-    reverseList(head) {
-        /* If head is initially null OR list is empty */
-        if (head == null)
-            return head;
 
-        /* If last node mark it head */
-        if (curr.next == null) {
-            head = curr;
+    reverseUtil(curr, prev) {
+        if (curr.next === null) {
 
             /* Update next to prev node */
             curr.next = prev;
-            return head;
+            return curr;
         }
-
+            
         /* Save curr->next node for recursive call */
-        var next1 = curr.next;
+        var next = curr.next;
 
         /* and update next .. */
         curr.next = prev;
 
-        reverseList(next1, curr);
-        return head;
+        this.reverseUtil(next, curr);
+        
+        return curr;
+    }
+
+    //Function to reverse a linked list.
+    reverseList(head) {
+        /* If head is initially null OR list is empty OR list has 1 node only */
+        if (head == null || head.next == null)
+            return head;
+
+        return reverseUtil(head, null);
     }
 }
 ```
