@@ -20,7 +20,8 @@ Explanation: There are 6 nodes in the linked list, so we have two middle nodes: 
 Find middle of the Linked List using Extra Memory
 
 ```
-Store the entire linked list in a Array such that each index contains the value of a node. Now, to find the middle of the linked list, we can simply return the value present at the middle of the Array List.
+Store the entire linked list in a Array such that each index contains the value of a node. 
+Now, to find the middle of the linked list, we can simply return the value present at the middle of the Array List.
 ```
 
 ```
@@ -59,7 +60,9 @@ Auxiliary Space: O(N)
 Find Middle of the Linked List by Counting Nodes (Two-pass):
 
 ```
-Traverse the whole linked list and count the number of nodes. After counting the total number of nodes, again traverse the first (count/2) nodes of the linked list and return the (count/2)th node’s value. This approach traverse the linked list two times to find the middle element of the linked list.
+Traverse the whole linked list and count the number of nodes. After counting the total number of nodes, 
+again traverse the first (count/2) nodes of the linked list and return the (count/2)th node’s value. 
+This approach traverse the linked list two times to find the middle element of the linked list.
 ```
 
 ```
@@ -100,7 +103,9 @@ Auxiliary Space: O(1)
 Find Middle of the Linked List by Counting Nodes (One-pass):
 
 ```
-Initialize an extra pointer, say mid with the head of the linked list and a counter to count the number of nodes in the linked list. Now, we traverse the linked list and increment the counter for each node and every time the value of counter becomes even, we move the mid pointer forward. As soon as we reach the end of the linked list, we return the mid pointer.
+Initialize an extra pointer, say mid with the head of the linked list and a counter to count the number of nodes in the linked list. 
+Now, we traverse the linked list and increment the counter for each node and every time the value of counter becomes even, 
+we move the mid pointer forward. As soon as we reach the end of the linked list, we return the mid pointer.
 ```
 
 ```
@@ -139,9 +144,14 @@ Auxiliary Space: O(1)
 ## Floyd’s Cycle Finding Algorithm
 
 ```
-We can use the Floyd’s Cycle Finding Algorithm, also known as Hare and Tortoise Algorithm to find the middle of the linked list. Traverse linked list using a slow pointer and a fast pointer. Move the slow pointer to the next node(one node forward) and the fast pointer to the next of the next node(two nodes forward). When the fast pointer reaches the last node or NULL, then the slow pointer will reach the middle of the linked list.
+We can use the Floyd’s Cycle Finding Algorithm, also known as Hare and Tortoise Algorithm to find the middle of the linked list. 
+Traverse linked list using a slow pointer and a fast pointer. Move the slow pointer to the next node(one node forward) and the 
+fast pointer to the next of the next node(two nodes forward). When the fast pointer reaches the last node or NULL, 
+then the slow pointer will reach the middle of the linked list.
 
-In case of odd number of nodes in the linked list, slow_ptr will reach the middle node when fast_ptr will reach the last node and in case of even number of nodes in the linked list, slow_ptr will reach the middle node when fast_ptr will become NULL.
+In case of odd number of nodes in the linked list, slow_ptr will reach the middle node when fast_ptr will reach 
+the last node and in case of even number of nodes in the linked list, slow_ptr will reach the middle node 
+when fast_ptr will become NULL.
 ```
 
 ```

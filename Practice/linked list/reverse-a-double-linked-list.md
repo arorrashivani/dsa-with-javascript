@@ -19,7 +19,10 @@ Output: 196 59 122 75
 ```
 Algorithm / Intuition
 
-A brute-force approach involves replacing data in a doubly linked list. First, we traverse the list and store node data in a stack. Then, in a second pass, we assign elements from the stack to nodes, ensuring a reverse order replacement since stacks follow the Last-In-First-Out (LIFO) principle.
+A brute-force approach involves replacing data in a doubly linked list. 
+First, we traverse the list and store node data in a stack. 
+Then, in a second pass, we assign elements from the stack to nodes, ensuring a reverse order replacement 
+since stacks follow the Last-In-First-Out (LIFO) principle.
 ```
 
 Follow the given steps to solve the problem using the above approach:
@@ -65,8 +68,11 @@ class Solution {
 ```
 
 ```
-Time Complexity : O(2N) During the first traversal, each node's value is pushed into the stack once, which requires O(N) time. Then, during the second iteration, the values are popped from the stack and used to update the nodes.
-Space Complexity : O(N) This is because we are using an external stack data structure. At the end of the first iteration, the stack will hold all N values of the doubly linked list therefore the space required for stack is directly proportional to the size of the input doubly linked list.
+Time Complexity : O(2N) During the first traversal, each node's value is pushed into the stack once, which requires O(N) time. 
+Then, during the second iteration, the values are popped from the stack and used to update the nodes.
+Space Complexity : O(N) This is because we are using an external stack data structure. At the end of the first iteration, 
+the stack will hold all N values of the doubly linked list therefore the space required for stack is directly proportional 
+to the size of the input doubly linked list.
 Auxiliary Space: O(N)
 ```
 
