@@ -1,4 +1,4 @@
-# Find Middle of the Linked List
+# Middle of the Linked List
 
 Given a Singly Linked List, the task is to find the middle of the linked list. If the number of nodes are even, then there would be two middle nodes, so return the second middle node.
 
@@ -20,7 +20,7 @@ Explanation: There are 6 nodes in the linked list, so we have two middle nodes: 
 Find middle of the Linked List using Extra Memory
 
 ```
-Store the entire linked list in a Array such that each index contains the value of a node. 
+Store the entire linked list in a Array such that each index contains the value of a node.
 Now, to find the middle of the linked list, we can simply return the value present at the middle of the Array List.
 ```
 
@@ -60,8 +60,8 @@ Auxiliary Space: O(N)
 Find Middle of the Linked List by Counting Nodes (Two-pass):
 
 ```
-Traverse the whole linked list and count the number of nodes. After counting the total number of nodes, 
-again traverse the first (count/2) nodes of the linked list and return the (count/2)th node’s value. 
+Traverse the whole linked list and count the number of nodes. After counting the total number of nodes,
+again traverse the first (count/2) nodes of the linked list and return the (count/2)th node’s value.
 This approach traverse the linked list two times to find the middle element of the linked list.
 ```
 
@@ -81,11 +81,18 @@ This approach traverse the linked list two times to find the middle element of t
             current = current.next;
         }
 
-        let middle = Math.floor(length / 2);
+        let middle = Math.floor(length / 2) + 1;
 
         current = node;
-        while(middle > 0) {
-            middle--;
+        while (current !== null) {
+            middle = middle - 1;
+
+            if (mid === 0) {
+                // Break out of the loop
+                // to return temp
+                break;
+            }
+
             current = current.next;
         }
 
@@ -103,10 +110,10 @@ Auxiliary Space: O(1)
 Find Middle of the Linked List by Counting Nodes (One-pass):
 
 ```
-Initialize an extra pointer, say mid with the head of the linked list and 
-a counter to count the number of nodes in the linked list. 
-Now, we traverse the linked list and increment the counter for each node and 
-every time the value of counter becomes even, we move the mid pointer forward. 
+Initialize an extra pointer, say mid with the head of the linked list and
+a counter to count the number of nodes in the linked list.
+Now, we traverse the linked list and increment the counter for each node and
+every time the value of counter becomes even, we move the mid pointer forward.
 As soon as we reach the end of the linked list, we return the mid pointer.
 ```
 
@@ -146,17 +153,17 @@ Auxiliary Space: O(1)
 ## Floyd’s Cycle Finding Algorithm
 
 ```
-We can use the Floyd’s Cycle Finding Algorithm, also known as Hare and Tortoise Algorithm 
-to find the middle of the linked list. 
-Traverse linked list using a slow pointer and a fast pointer. 
-Move the slow pointer to the next node(one node forward) and 
-the fast pointer to the next of the next node(two nodes forward). 
-When the fast pointer reaches the last node or NULL, 
+We can use the Floyd’s Cycle Finding Algorithm, also known as Hare and Tortoise Algorithm
+to find the middle of the linked list.
+Traverse linked list using a slow pointer and a fast pointer.
+Move the slow pointer to the next node(one node forward) and
+the fast pointer to the next of the next node(two nodes forward).
+When the fast pointer reaches the last node or NULL,
 then the slow pointer will reach the middle of the linked list.
 
-In case of odd number of nodes, 
-slow_ptr will reach the middle node when fast_ptr will reach the last node and 
-in case of even number of nodes, slow_ptr will reach the middle node 
+In case of odd number of nodes,
+slow_ptr will reach the middle node when fast_ptr will reach the last node and
+in case of even number of nodes, slow_ptr will reach the middle node
 when fast_ptr will become NULL.
 ```
 
@@ -180,6 +187,9 @@ class Solution {
 ```
 
 ```
-Time Complexity: O(N), where N is the number of nodes in the linked list.
+Time Complexity: O(N/2) The algorithm requires the 'fast' pointer to reach the end of the list which it does after approximately N/2 iterations (where N is the total number of nodes). Therefore, the maximum number of iterations needed to find the middle node is proportional to the number of nodes in the list, making the time complexity linear, or O(N/2) ~ O(N).
+
+Space Complexity : O(1) There is constant space complexity because it uses a constant amount of extra space regardless of the size of the linked list. We only use a few variables to keep track of the middle position and traverse the list, and the memory required for these variables does not depend on the size of the list.
+
 Auxiliary Space: O(1)
 ```
